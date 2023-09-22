@@ -1,3 +1,7 @@
-h1{
-    color: brown;
+.Weather-App{
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
 }
