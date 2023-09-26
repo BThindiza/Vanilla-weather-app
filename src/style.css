@@ -1,7 +1,27 @@
 .Weather-App{
     max-width: 600px;
-    margin: 30px auto;
+    margin: 35px auto;
     padding: 20px;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid color(grey);
+    border-radius:10px;
+}
+h1{
+    color: rgb(114, 114, 114);
+    font-size: 28px;
+    font-weight: 200;
+    line-height: 20px;
+    margin-bottom: 0;
+}
+ul{
+    margin: 0;
+    padding:0;
+}
+li{
+list-style: none;
+color: black;
+display: block;
+font-family:Arial, Helvetica, sans-serif;
+font-size: 18px;
+font-weight: 100;
+line-height: 18px;
 }
