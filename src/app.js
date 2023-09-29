@@ -1,10 +1,13 @@
 
 
 function displayTemperature(response){
-    console.log(response.data.main.temp);
     let temperatureelement = document.querySelector("#temperature");
-    temperatureelement.innerHTML= Math.round(response.data.main.temp)
+    let cityElement = document.querySelector("#city");
+    let descriptionElement =Document.querySelector("#description");
+    temperatureelement.innerHTML= Math.round(response.data.main.temp);
+cityElement.innerHTML= response.data.name;
+descriptionElement.innerHTML = response.data.name;
 }
 let apiKey ="3t1a5685d95o5fd95bdaaac3a43d5083";
-let apiUrl="https://api.shecodes.io/weather/v1/current?lon={lon}&lat={lat}&key={key}"; 
+let apiUrl="https://api.shecodes.io/weather/v1/temperature?lon=-9.13333&lat=38.7166&key=3t1a5685d95o5fd95bdaaac3a43d5083&units=metric"; 
 axios.get(apiUrl).then(displayTemperature);
