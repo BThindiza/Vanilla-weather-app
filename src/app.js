@@ -38,7 +38,7 @@ function search(event){
 }
 
 let apiKey ="3t1a5685d95o5fd95bdaaac3a43d5083";
-let apiUrl="https://api.shecodes.io/weather/v1/temperature?lon=-9.13333&lat=38.7166&key=3t1a5685d95o5fd95bdaaac3a43d5083&units=metric"; 
+let apiUrl="https://api.shecodes.io/weather/v1/current?lon=-9.13333&lat=38.7166&key=3t1a5685d95o5fd95bdaaac3a43d5083&units=metric"; 
 axios.get(apiUrl).then(displayTemperature);
 
 let form = document.querySelector("#form");
