@@ -30,16 +30,20 @@ humidityElement.innerHTML= response.data.main.humidity;
 windElement.innerHTML = math.round(response.data.wind.speed);
 dateElelment.innerHTML= formatDate(response.data.dt*1000);
 }
-
-function search(event){
-    event.preventDefault();
-    let citySearchElement = document.querySelector("#city-search");
-    console.log(cityElementSearchElement.value);
-}
-
-let apiKey ="3t1a5685d95o5fd95bdaaac3a43d5083";
+function search(city){
+    let apiKey ="3t1a5685d95o5fd95bdaaac3a43d5083";
+let city ="Polokwane";
 let apiUrl="https://api.shecodes.io/weather/v1/current?lon=-9.13333&lat=38.7166&key=3t1a5685d95o5fd95bdaaac3a43d5083&units=metric"; 
 axios.get(apiUrl).then(displayTemperature);
 
+}
+
+function handleSubmit(event){
+    event.preventDefault();
+    let citySearchElement = document.querySelector("#city-search");
+    search(citySearchElement.value);
+}
+search("Polokwane");
+
 let form = document.querySelector("#form");
-form.addEventListener("submit",search);
+form.addEventListener("submit",handleSubmit);
