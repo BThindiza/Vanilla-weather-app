@@ -32,3 +32,9 @@ font-size: 18px;
 font-weight: 100;
 line-height: 18px;
 }
+.Weather-temperature .active{
+    columns: black;
+    cursor: default;
+}
+Weather-temperature .active:hover{
+    text-decoration: none;}
