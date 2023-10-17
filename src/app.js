@@ -13,7 +13,7 @@ let day =  days[date.getDay()];
 return `${day} ${month}, ${hours}:${minutes}`;
 }
 function formatDay(timestamp){
-    let date =new Date(timestamp * 1000);\
+    let date =new Date(timestamp * 1000);
     let day =date.getDay();
     let days =["Sun", "Mon","Tues","Wed","Thurs","Fri","Sat"];
     return days[day];
