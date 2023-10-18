@@ -9,6 +9,8 @@ if (minutes< 10){
     minutes =`0${hours}`;
 } 
 let days=["Sunday", "Monday", "Tuesday", "Wednesday" ,"Thursday","Friday","Saturday"];
+let months = ["January","February","March","April","May","June","July", "August","September","October","November","December"];
+let month = months[date.getMonth()];
 let day =  days[date.getDay()];
 return `${day} ${month}, ${hours}:${minutes}`;
 }
@@ -45,8 +47,8 @@ forecastHTML = forecastHTML + `</div>`;
 forecastElement.innerHTML = forecastHTML;
 }
 function getForecast(coordinates){
-    let apiKey = "6ee72f51667c1ac4a6bc6bfa1cc12d42";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${ApiKey}&units=metric`;
+    let apiKey ="3t1a5685d95o5fd95bdaaac3a43d5083";
+    let apiUrl =`https://api.shecodes.io/weather/v1/current?query=${city}&key=3t1a5685d95o5fd95bdaaac3a43d5083&units=metric`;
     axios.get(apiUrl).then(displayForescast);
 }
 
