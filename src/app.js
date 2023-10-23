@@ -59,20 +59,15 @@ function displayTemperature(response){
     let humidityElement = document.querySelector("#humidity");
     let windElement = document.querySelector("#wind");
     let dateElelment = document.querySelector("#date");
-    let iconElement = document.querySelector("#icon");
 
-     let celsiusTemperature = response.data.main.temp;
 
-    temperatureelement.innerHTML= Math.round(response.data.main.temp);
-cityElement.innerHTML= response.data.name;
-descriptionElement.innerHTML = response.data.weather[0].description;
+    temperatureelement.innerHTML= Math.round(response.data.temperature.current);
+cityElement.innerHTML= response.data.city;
+descriptionElement.innerHTML = response.data.condition.description;
 humidityElement.innerHTML= response.data.main.humidity;
 windElement.innerHTML = math.round(response.data.wind.speed);
-dateElelment.innerHTML= formatDate(response.data.dt*1000);
-iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-);
-iconElement.setAttribute("alt",response.data.weather[0].description);
-getForecast(response.data.coord);
+dateElelment.innerHTML= formatDate(response.data.time*1000);
+celsiusTemperature= response.data.temperature.current;
 }
 
 function search(city){
