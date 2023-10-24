@@ -9,10 +9,8 @@ if (minutes< 10){
     minutes =`0${hours}`;
 } 
 let days=["Sunday", "Monday", "Tuesday", "Wednesday" ,"Thursday","Friday","Saturday"];
-let months = ["January","February","March","April","May","June","July", "August","September","October","November","December"];
-let month = months[date.getMonth()];
 let day =  days[date.getDay()];
-return `${day} ${month}, ${hours}:${minutes}`;
+return `${day} ${hours}:${minutes}`;
 }
 function formatDay(timestamp){
     let date =new Date(timestamp * 1000);
@@ -24,10 +22,10 @@ function displayForescast(response){
     let forecast = response.data.daily;
 let forecastElement = document.querySelector("#weather-forecast");
 let forecastHTML =`<div class = "row">`;
-forecast.forEach(function(forecast,index){
+forecast.forEach(function(_forecast,index){
     if (index < 6){
         forecastHTML = forecastHTML + ` < div class ="col-2">
-        <div class ="weather-forecast-date">${formatDay(forecastDay.dt)}</div>
+        <div class ="weather-forecast-date">${formatDay(_forecast.dt)}</div>
         <img src = "http://openweathermap.org/img/wn/${
             forecastDay.weather[0].icon
           }@2x.png"
@@ -46,7 +44,7 @@ forecast.forEach(function(forecast,index){
 forecastHTML = forecastHTML + `</div>`;
 forecastElement.innerHTML = forecastHTML;
 }
-function getForecast(coordinates){
+function getForecast(_coordinates){
     let apiKey ="3t1a5685d95o5fd95bdaaac3a43d5083";
     let apiUrl =`https://api.shecodes.io/weather/v1/current?query=${city}&key=3t1a5685d95o5fd95bdaaac3a43d5083&units=metric`;
     axios.get(apiUrl).then(displayForescast);
@@ -59,8 +57,6 @@ function displayTemperature(response){
     let humidityElement = document.querySelector("#humidity");
     let windElement = document.querySelector("#wind");
     let dateElelment = document.querySelector("#date");
-
-
     temperatureelement.innerHTML= Math.round(response.data.temperature.current);
 cityElement.innerHTML= response.data.city;
 descriptionElement.innerHTML = response.data.condition.description;
