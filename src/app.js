@@ -44,7 +44,7 @@ function getForecast(coordinates){
     let apiUrl =`https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
     axios.get(apiUrl).then(displayForescast);
 }
-let celsiusTemperature= null;
+
 
 function displayTemperature(response){
     let temperatureElement = document.querySelector("#temperature");
@@ -54,7 +54,9 @@ function displayTemperature(response){
     let windElement = document.querySelector("#wind");
     let dateElelment = document.querySelector("#date");
     let iconElement = document.querySelector("#icon");
+
     let celsiusTemperature =response.data.main.temp;
+    
         temperatureElement.innerHTML= Math.round(celsiusTemperature);
 cityElement.innerHTML= response.data.city;
 descriptionElement.innerHTML = response.data.weather[0].description;
@@ -71,14 +73,36 @@ function search(city){
 let apiUrl =`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 axios.get(apiUrl).then(displayTemperature);
 }
-
 function handleSubmit(event) {
     event.preventDefault();
     let citySearchElement = document.querySelector("#city-search");
     search(citySearchElement.value);
 }
+ function displayFahrenheitTemperature(event){
+    event.preventDefault();
+    celsiusLink.classList.remove("active");
+    fahrenheitLink.classList.add("active");
+    let temperatureElement = document.querySelector("#temperature");
+    let fahrenheitTemperature =(celsiusTemperature * 9)/ 5 + 32;
+    temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+ }
+ function displayCelsiusTemperature(event){
+    event.preventDefault();
+    fahrenheitLink.classList.remove("active");
+    celsiusLinkLink.classList.add("active");
+    let temperatureElement = document.querySelector("#temperature");
+    temperatureElement.innerHTML = Math.round(celsiusTemperature);
+ }
 
- let form =document.querySelector("#form");
+let celsiusTemperature= null;
+
+let form =document.querySelector("#form");
  form.addEventListener("submit",handleSubmit);
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click",displayFahrenheitTemperature);
+
+let celsiusLink = document.querySelector("celsius-link");
+celsiusLink.addEventListener("click", displayCelsiusTemperature);
 
 search("Polokwane");
