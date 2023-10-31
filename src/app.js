@@ -28,7 +28,7 @@ function displayTemperature(response) {
 cityElement.innerHTML= response.data.name;
 descriptionElement.innerHTML = response.data.weather[0].description;
 humidityElement.innerHTML= response.data.main.humidity;
-windElement.innerHTML = Math.round(response.data.wind.speed * 3.6);
+windElement.innerHTML = Math.round(response.data.wind.speed);
 dateElelment.innerHTML= formatDate(response.dt*1000);
 iconElement.setAttribute("src", `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@01d.png`);
 iconElement.setAttribute("alt",response.data.weather[0].description);
@@ -44,7 +44,7 @@ axios.get(apiUrl).then(displayTemperature);
 }
 function handleSubmit(event) {
     event.preventDefault();
-    let cityElement = document.querySelector("#city-search");
+    let cityElement = document.querySelector("#city");
     search(cityElement.value);
 }
  function displayFahrenheitTemperature(event){
